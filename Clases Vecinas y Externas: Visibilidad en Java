@@ -1,0 +1,174 @@
+# Programación Orientada a Objetos en Java - Guía Completa
+
+## 1. Clases y Objetos
+
+### Concepto Básico
+- **Clase**: "Receta" que define propiedades y comportamientos
+- **Objeto**: Instancia concreta creada a partir de la clase
+
+### Ejemplo
+```java
+public class Persona {
+    // Atributos (privados para encapsulamiento)
+    private String nombre;
+    private int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Método
+    public void saludar() {
+        System.out.println("Hola, me llamo " + nombre + " y tengo " + edad + " años.");
+    }
+}
+
+// Uso
+Persona persona = new Persona("Juan", 30);
+persona.saludar();
+2. Herencia
+Concepto
+Una clase hereda atributos y métodos de otra
+
+Relación "es-un"
+
+Ejemplo
+java
+Copy
+public class Empleado extends Persona {
+    private double salario;
+
+    public Empleado(String nombre, int edad, double salario) {
+        super(nombre, edad); // Llama al constructor de Persona
+        this.salario = salario;
+    }
+
+    public void mostrarSalario() {
+        System.out.println("Salario: " + salario);
+    }
+}
+3. Polimorfismo
+Concepto
+Un objeto puede tomar muchas formas
+
+Mismo método, implementaciones diferentes
+
+Ejemplo
+java
+Copy
+public class Animal {
+    public void hacerSonido() {
+        System.out.println("Sonido genérico");
+    }
+}
+
+public class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("Guau guau!");
+    }
+}
+
+// Uso polimórfico
+Animal miAnimal = new Perro();
+miAnimal.hacerSonido(); // Output: "Guau guau!"
+4. Encapsulamiento
+Concepto
+Ocultar detalles internos
+
+Exponer solo lo necesario
+
+Ejemplo
+java
+Copy
+public class CuentaBancaria {
+    private double saldo;
+
+    public void depositar(double monto) {
+        if (monto > 0) saldo += monto;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+}
+5. Clases Vecinas y Externas
+Clases Vecinas (mismo archivo)
+java
+Copy
+// Archivo: Universidad.java
+public class Universidad {
+    // Solo una clase pública por archivo
+}
+
+class Aula {  // Clase vecina (no pública)
+    // Visible solo en este archivo y paquete
+}
+Visibilidad entre Clases
+Modificador	Misma Clase	Mismo Paquete	Subclases	Otros Paquetes
+private	Sí	No	No	No
+(default)	Sí	Sí	No	No
+protected	Sí	Sí	Sí	Solo en herencia
+public	Sí	Sí	Sí	Sí
+6. Organización de Archivos
+Opción 1: Un solo archivo
+java
+Copy
+public class Main {
+    public static void main(String[] args) {
+        // Código de ejecución
+    }
+}
+
+class Auxiliar {  // Clase vecina
+    // Implementación
+}
+Opción 2: Múltiples archivos (Recomendado)
+Copy
+src/
+├── Main.java
+└── Persona.java
+7. @Override Explicado
+Propósito
+Indica que estás sobrescribiendo un método de la clase padre
+
+Ayuda a detectar errores
+
+Ejemplo
+java
+Copy
+public class Animal {
+    public void mover() {
+        System.out.println("El animal se mueve");
+    }
+}
+
+public class Pajaro extends Animal {
+    @Override  // Buena práctica
+    public void mover() {
+        System.out.println("El pájaro vuela");
+    }
+}
+Consejos Finales
+Usa private para atributos (encapsulamiento)
+
+Usa protected solo cuando sea necesario para herencia
+
+Prefiere composición sobre herencia
+
+Mantén clases pequeñas y con una sola responsabilidad
+
+Usa paquetes para organizar clases relacionadas
+
+Copy
+
+Este documento Markdown contiene:
+- Todos los conceptos explicados
+- Ejemplos de código bien formateados
+- Tablas comparativas
+- Estructura jerárquica clara
+- Consejos prácticos
+
+Puedes copiarlo directamente a un archivo `.md` y usarlo como referencia o material de estudio. ¿Necesitas que añada algo más o que explique algún otro concepto relacionado?
